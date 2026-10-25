@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Test results · Vecta</title>
+<meta name="theme-color" content="#1f5fd6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css">
+<style>
+  .results { display: grid; gap: 16px; }
+  .lead { font-size: 15px; max-width: 65ch; margin: 0; }
+  .facts3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; min-width: 0; }
+  .fact b { font-family: var(--mono); font-size: 26px; font-variant-numeric: tabular-nums; color: var(--accent); line-height: 1.1; }
+  .fact span { font-size: 14px; color: var(--muted); }
+  .panel h3 { margin: 0; font-size: 17px; }
+  .panel p { margin: 0; max-width: 65ch; }
+  .note { color: var(--muted); font-size: 14px; }
+  .chart { width: 100%; height: auto; display: block; }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  td.num { font-family: var(--mono); }
+  tr.us td { font-weight: 700; color: var(--accent); }
+  td.cell { font-family: var(--mono); background: color-mix(in srgb, var(--c) calc(var(--v) * 1%), transparent); }
+  .compare { display: grid; gap: 10px; }
+  .compare figure { margin: 0; display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center; }
+  .compare figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .compare figcaption b { display: block; color: var(--ink); font-size: 13px; }
+  .compare img { width: 100%; max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); display: block; background: #fbfcfe; }
+  .limits { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; }
+  @media (max-width: 520px) { .compare figure { grid-template-columns: 1fr; gap: 6px; } .fact b { font-size: 22px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="./">Vecta<span>.</span></a>
+    <a class="btn" href="./"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a>
+  </div>
+
+  <section class="results" aria-labelledby="h">
+    <div style="display:grid;gap:4px">
+      <h2 class="section" id="h">Test results: first prototype</h2>
+      <p class="lead">We made the same lesson twice: once as a Vecta lesson, and once as a normal whiteboard video. Then we measured how big each one is and whether its text can still be read.</p>
+      <p class="note" id="runInfo"></p>
+    </div>
+
+    <div class="facts3" id="facts"></div>
+
+    <div class="panel">
+      <h3>1. How much data the lesson uses</h3>
+      <p>Both versions use the same voice recording. The difference is how the board is sent: as pixels in a video, or as Vecta's drawing instructions.</p>
+      <svg class="chart" id="sizeChart" role="img" aria-label="Data per hour of lesson: Vecta compared with video at 144p to 720p"></svg>
+      <div class="tablewrap"><table id="sizeTable">
+        <thead><tr><th>Format</th><th>This lesson</th><th>Per hour</th><th>Board data</th><th>vs Vecta</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="note">The video was encoded with x264 (CRF 28, preset slow), a very efficient setting, and the lesson is a clean computer-drawn board. That is a best case for video: filmed whiteboards and streaming apps usually use more data.</p>
+    </div>
+
+    <div class="panel">
+      <h3>2. Can the text still be read?</h3>
+      <p>We showed text at different sizes, measured as a share of screen height, through each format on a 1280×720 screen, and had OCR software read it back. Cells show the share of words and numbers read correctly.</p>
+      <div class="tablewrap"><table id="readTable">
+        <thead><tr><th>Text size</th><th>Vecta</th><th>144p</th><th>240p</th><th>360p</th><th>480p</th><th>720p</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="note">Lesson headings are about 7–8% of screen height and survive 144p. Small labels and worked steps (2–3.5%) are where low-resolution video breaks down. OCR stands in for human eyes until our student test is done.</p>
+    </div>
+
+    <div class="panel">
+      <h3>3. The same text at 3% of screen height</h3>
+      <div class="compare">
+        <figure><figcaption><b>Vecta</b>drawn by the phone</figcaption><img src="cmp_vecta.png" alt="Four lines of maths text, perfectly sharp" width="800" height="196"></figure>
+        <figure><figcaption><b>240p video</b>stretched to screen</figcaption><img src="cmp_240.png" alt="The same text from 240p video, soft but mostly readable" width="800" height="196"></figure>
+        <figure><figcaption><b>144p video</b>stretched to screen</figcaption><img src="cmp_144.png" alt="The same text from 144p video, too blurred to read the numbers" width="800" height="196"></figure>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>What this test does and doesn't show</h3>
+      <ul class="limits">
+        <li><b>Shows:</b> Vecta text stayed readable at every size, while small text in 144p video was mostly unreadable.</li>
+        <li><b>Shows:</b> the drawing instructions are tiny, about 1 KB for the whole lesson.</li>
+        <li><b>Doesn't show:</b> large savings on the whole lesson. Against this efficient video, Vecta was about 2× smaller at 240p, because the voice is most of the file.</li>
+        <li><b>Next:</b> a student readability test, a real filmed whiteboard lesson, and data measured from a streaming app.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script src="results.js"></script>
+</body>
+</html>

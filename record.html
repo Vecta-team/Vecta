@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Record a lesson · Vecta</title>
+<meta name="theme-color" content="#1f5fd6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="katex.min.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="./">Vecta<span>.</span></a>
+    <a class="btn" href="./"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a>
+  </div>
+
+  <div style="display:grid;gap:2px">
+    <h2 class="section">Record a lesson</h2>
+    <p class="sub">Press record, then talk and draw like on a whiteboard. Vecta saves your voice and every stroke, not a video.</p>
+  </div>
+  <div id="msg" hidden></div>
+
+  <!-- Recording -->
+  <section id="studio" class="player">
+    <div class="tools" role="toolbar" aria-label="Drawing tools">
+      <button class="btn" type="button" data-tool="pen" data-color="ink" aria-pressed="true"><span class="swatch" style="--c: var(--ink)"></span>Pen</button>
+      <button class="btn" type="button" data-tool="pen" data-color="accent" aria-pressed="false"><span class="swatch" style="--c: var(--accent)"></span>Blue pen</button>
+      <button class="btn" type="button" data-tool="text" aria-pressed="false">Aa Text</button>
+      <button class="btn" type="button" data-tool="math" aria-pressed="false">∑ Equation</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button class="btn" type="button" id="undo" disabled>Undo</button>
+      <button class="btn" type="button" id="newPage" disabled>New page</button>
+    </div>
+    <div id="board" style="position:relative"></div>
+    <div class="recbar">
+      <button class="recbtn" id="rec" type="button"><span class="dot"></span><span id="recLabel">Record</span></button>
+      <span class="clock" id="clock">0:00</span>
+      <span class="hint" id="hint">Drawing starts when you press Record. Tap Text or Equation, then tap the board where it should go.</span>
+    </div>
+  </section>
+
+  <!-- Review -->
+  <section id="review" hidden style="display:grid;gap:14px">
+    <div class="player">
+      <div class="player-head"><h2>Preview</h2><span class="meta" id="revMeta"></span></div>
+      <div id="previewBoard"></div>
+      <div class="controls">
+        <button class="btn primary" id="pPlay" type="button" aria-label="Play"><svg viewBox="0 0 24 24" id="pIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+        <input class="scrub" id="pScrub" type="range" min="0" max="10" step="0.05" value="0" aria-label="Preview position">
+        <span class="time" id="pTime">0:00 / 0:00</span>
+      </div>
+      <div class="weight">
+        <div class="line1"><span>Download size</span><b id="rTotal">–</b></div>
+        <div class="legend"><span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="rVoice">–</b></span><span style="--c: var(--accent)">Drawings <b id="rDraw">–</b></span><span id="rHour"></span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <label class="field" for="title">Lesson title<input id="title" type="text" maxlength="80" placeholder="e.g. Area of a triangle"></label>
+      <label class="field" for="subject">Subject<input id="subject" type="text" maxlength="40" value="Maths"></label>
+      <div class="row">
+        <button class="btn primary" id="save" type="button">Save to My lessons</button>
+        <button class="btn" id="download" type="button">Save as .vecta file</button>
+        <button class="btn danger" id="discard" type="button">Discard and record again</button>
+      </div>
+      <span class="hint" id="discardConfirm" hidden>Tap Discard again to delete this recording.</span>
+    </div>
+  </section>
+</main>
+<audio id="pAudio" preload="auto"></audio>
+<script src="katex.min.js"></script>
+<script src="board.js"></script>
+<script src="store.js"></script>
+<script src="record.js"></script>
+</body>
+</html>

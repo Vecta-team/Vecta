@@ -1,0 +1,140 @@
+{
+ "duration_s": 60.9,
+ "video": [
+  {
+   "height": 144,
+   "video_track_bytes": 77750,
+   "total_bytes": 194316,
+   "readability": {
+    "52.0": 47,
+    "60.5": 73
+   },
+   "times_bigger_than_vecta": 1.7,
+   "mb_per_hour": 11.5
+  },
+  {
+   "height": 240,
+   "video_track_bytes": 128551,
+   "total_bytes": 245117,
+   "readability": {
+    "52.0": 47,
+    "60.5": 73
+   },
+   "times_bigger_than_vecta": 2.1,
+   "mb_per_hour": 14.5
+  },
+  {
+   "height": 360,
+   "video_track_bytes": 177789,
+   "total_bytes": 294355,
+   "readability": {
+    "52.0": 47,
+    "60.5": 73
+   },
+   "times_bigger_than_vecta": 2.5,
+   "mb_per_hour": 17.4
+  },
+  {
+   "height": 480,
+   "video_track_bytes": 260743,
+   "total_bytes": 377309,
+   "readability": {
+    "52.0": 47,
+    "60.5": 73
+   },
+   "times_bigger_than_vecta": 3.2,
+   "mb_per_hour": 22.3
+  },
+  {
+   "height": 720,
+   "video_track_bytes": 342514,
+   "total_bytes": 459080,
+   "readability": {
+    "52.0": 47,
+    "60.5": 73
+   },
+   "times_bigger_than_vecta": 3.9,
+   "mb_per_hour": 27.1
+  }
+ ],
+ "vecta": {
+  "voice_16k_bytes": 116566,
+  "voice_12k_bytes": 80634,
+  "instructions_gz_bytes": 1031,
+  "total_bytes": 117597,
+  "readability": {
+   "52.0": 47,
+   "60.5": 73
+  },
+  "mb_per_hour": 7.0
+ },
+ "textsize": {
+  "sizes_pct": [
+   2,
+   2.5,
+   3,
+   3.5,
+   4,
+   5,
+   6
+  ],
+  "vecta": [
+   100,
+   100,
+   100,
+   100,
+   100,
+   100,
+   93
+  ],
+  "video": {
+   "144": [
+    0,
+    7,
+    3,
+    20,
+    67,
+    90,
+    100
+   ],
+   "240": [
+    17,
+    63,
+    83,
+    100,
+    93,
+    93,
+    100
+   ],
+   "360": [
+    90,
+    90,
+    90,
+    100,
+    100,
+    100,
+    100
+   ],
+   "480": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    93,
+    100
+   ],
+   "720": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    93
+   ]
+  }
+ },
+ "run_date": "2026-10-24",
+ "lesson": "Area of a circle (robot-voice version, 61 s)"
+}

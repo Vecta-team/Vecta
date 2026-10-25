@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vecta Academy</title>
+<meta name="description" content="Sharp maths and science lessons that use a fraction of video's data.">
+<meta name="theme-color" content="#1f5fd6">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="katex.min.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="./">Vecta<span>.</span></a>
+    <span class="status" id="status">Checking offline mode…</span>
+  </div>
+
+  <!-- Library -->
+  <section id="library" class="lib" style="display:grid;gap:18px">
+    <div class="row spread">
+      <div style="display:grid;gap:2px">
+        <h2 class="section">Lessons</h2>
+        <p class="sub">Each lesson is the teacher's voice plus a tiny drawing file. Your phone draws the board itself.</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="results.html"><svg viewBox="0 0 24 24"><path d="M4 19h16v2H4zM6 10h3v7H6zM11 6h3v11h-3zM16 13h3v4h-3z"/></svg>Test results</a>
+        <a class="btn primary" href="record.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>Record a lesson</a>
+      </div>
+    </div>
+    <div class="dl" id="dl">
+      <div class="row spread">
+        <div style="display:grid;gap:2px;min-width:0">
+          <b id="dlTitle">Download lessons for offline</b>
+          <span class="sub" id="dlInfo">Checking…</span>
+        </div>
+        <button class="btn primary" id="dlBtn" type="button" disabled><svg viewBox="0 0 24 24"><path d="M11 4h2v9l3-3 1.4 1.4L12 16.8 6.6 11.4 8 10l3 3zM5 18h14v2H5z"/></svg><span id="dlLabel">Download all</span></button>
+      </div>
+      <div class="bar" id="dlBar" hidden aria-hidden="true"><i class="draw" id="dlFill" style="width:0%"></i></div>
+    </div>
+    <div class="grid" id="builtin"></div>
+
+    <div class="row spread">
+      <div style="display:grid;gap:2px">
+        <h2 class="section">My lessons</h2>
+        <p class="sub">Lessons you recorded or received. They stay on this phone.</p>
+      </div>
+      <label class="btn" for="importFile"><svg viewBox="0 0 24 24"><path d="M11 4h2v9l3-3 1.4 1.4L12 16.8 6.6 11.4 8 10l3 3zM5 18h14v2H5z"/></svg>Open a .vecta file</label>
+      <input type="file" id="importFile" accept=".vecta,.zip,application/zip" hidden>
+    </div>
+    <div id="importMsg" hidden></div>
+    <div class="grid" id="mine"></div>
+  </section>
+
+  <!-- Player -->
+  <section id="playerView" hidden style="display:grid;gap:14px">
+    <div class="row"><a class="btn" href="#" id="backToList"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a></div>
+    <div id="loadMsg" hidden></div>
+    <div class="player">
+      <div class="player-head"><h2 id="pTitle">Lesson</h2><span class="meta" id="pMeta"></span></div>
+      <div id="board"></div>
+      <div class="caption" id="caption" aria-live="polite">Press play. The board draws itself in time with the voice.</div>
+      <div class="controls">
+        <button class="btn primary" id="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+        <button class="btn" id="back10" type="button" aria-label="Back 10 seconds"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>10s</button>
+        <input class="scrub" id="scrub" type="range" min="0" max="60" step="0.05" value="0" aria-label="Lesson position">
+        <span class="time" id="time">0:00 / 0:00</span>
+        <button class="btn" id="cc" type="button" aria-pressed="true">CC</button>
+      </div>
+      <div class="weight">
+        <div class="line1"><span>Download size for this lesson</span><b id="totalKB">–</b></div>
+        <div class="bar" aria-hidden="true"><i class="voice" id="barVoice"></i><i class="draw" id="barDraw"></i></div>
+        <div class="legend">
+          <span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="voiceKB">–</b></span>
+          <span style="--c: var(--accent)">Drawings <b id="drawKB">–</b></span>
+          <span id="perHour"></span>
+        </div>
+        <a href="results.html" style="font-size:14px">See how this compares with video →</a>
+      </div>
+      <div class="actions">
+        <button class="btn" id="shareBtn" type="button"><svg viewBox="0 0 24 24"><path d="M11 16h2V7l3 3 1.4-1.4L12 3.2 6.6 8.6 8 10l3-3zM5 18h14v2H5z"/></svg>Save as .vecta file</button>
+        <button class="btn danger" id="deleteBtn" type="button" hidden>Delete</button>
+        <span class="hint" id="deleteConfirm" hidden>Tap Delete again to remove this lesson.</span>
+        <span class="hint" id="shareMsg" hidden></span>
+      </div>
+    </div>
+  </section>
+</main>
+<audio id="audio" preload="auto"></audio>
+<script src="katex.min.js"></script>
+<script src="board.js"></script>
+<script src="store.js"></script>
+<script src="player.js"></script>
+</body>
+</html>

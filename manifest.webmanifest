@@ -1,0 +1,23 @@
+{
+ "name": "Vecta Academy",
+ "short_name": "Vecta",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#eef1f5",
+ "theme_color": "#1f5fd6",
+ "description": "Sharp maths and science lessons that use a fraction of video's data.",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

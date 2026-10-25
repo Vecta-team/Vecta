@@ -1,0 +1,64 @@
+{
+ "lessons": [
+  {
+   "id": "area-of-a-circle",
+   "title": "Area of a circle",
+   "subject": "Maths",
+   "level": "Ages 11-14",
+   "duration": 48.66,
+   "voice": "recorded",
+   "order": 1,
+   "bytes": 102595,
+   "sizes": {
+    "instructions_gz": 1096,
+    "voice_opus": 101499,
+    "voice_m4a": 152950
+   }
+  },
+  {
+   "id": "solving-equations",
+   "title": "Solving a linear equation",
+   "subject": "Maths",
+   "level": "Ages 12-14",
+   "duration": 30.22,
+   "voice": "placeholder",
+   "order": 2,
+   "bytes": 55662,
+   "sizes": {
+    "instructions_gz": 755,
+    "voice_opus": 54907,
+    "voice_m4a": 107034
+   }
+  },
+  {
+   "id": "pythagoras",
+   "title": "Pythagoras' theorem",
+   "subject": "Maths",
+   "level": "Ages 13-15",
+   "duration": 42.55,
+   "voice": "placeholder",
+   "order": 3,
+   "bytes": 82285,
+   "sizes": {
+    "instructions_gz": 808,
+    "voice_opus": 81477,
+    "voice_m4a": 168653
+   }
+  },
+  {
+   "id": "speed-distance-time",
+   "title": "Speed, distance and time",
+   "subject": "Physics",
+   "level": "Ages 11-14",
+   "duration": 25.43,
+   "voice": "placeholder",
+   "order": 4,
+   "bytes": 48759,
+   "sizes": {
+    "instructions_gz": 676,
+    "voice_opus": 48083,
+    "voice_m4a": 95633
+   }
+  }
+ ]
+}
