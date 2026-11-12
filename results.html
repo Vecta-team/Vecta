@@ -40,7 +40,7 @@
 <main>
   <div class="topbar">
     <a class="brand" href="./">Vecta<span>.</span></a>
-    <a class="btn" href="./"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a>
+    <a class="btn" href="app.html"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a>
   </div>
 
   <section class="results" aria-labelledby="h">
@@ -48,6 +48,26 @@
       <h2 class="section" id="h">Test results: first prototype</h2>
       <p class="lead">We made the same lesson twice: once as a Vecta lesson, and once as a normal whiteboard video. Then we measured how big each one is and whether its text can still be read.</p>
       <p class="note" id="runInfo"></p>
+    </div>
+
+    <div class="panel">
+      <h3>Headline test: the teacher's recorded voice</h3>
+      <p>The same 49-second “Area of a circle” lesson, as a Vecta lesson and as a 144p video with ordinary video sound (48 kbps AAC). These are the numbers on our front page.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th>144p video</th><th>Vecta</th></tr></thead>
+        <tbody>
+          <tr><td>Whole lesson</td><td class="num">523 KB</td><td class="num">103 KB (about 5× smaller)</td></tr>
+          <tr><td>Board</td><td class="num">192 KB of pixels</td><td class="num">1.1 KB of drawings (about 175× smaller)</td></tr>
+          <tr><td>Sound</td><td class="num">293 KB (48 kbps AAC)</td><td class="num">101 KB (16 kbps Opus)</td></tr>
+          <tr><td>Per hour</td><td class="num">38.7 MB</td><td class="num">7.6 MB</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Part of the 5× comes from the smaller voice format. The stricter test below removes that advantage by giving both versions the same voice file.</p>
+    </div>
+
+    <div style="display:grid;gap:4px">
+      <h2 class="section">Stricter test: same voice file in both</h2>
+      <p class="note">Robot-voice version of the lesson (61 s). This is the best case for video.</p>
     </div>
 
     <div class="facts3" id="facts"></div>

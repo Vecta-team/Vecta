@@ -122,3 +122,6 @@ h2.section { font-family: var(--display); font-size: 20px; margin: 0; text-wrap:
 .field input { font: 16px var(--body); padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); min-width: 0; }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; }
 @media (max-width: 520px) { .brand { font-size: 22px; } .player-head h2 { font-size: 17px; } }
+
+/* Heading font (Bricolage Grotesque 700, 22 KB, hosted here so it works offline). */
+@font-face { font-family: "Bricolage Grotesque"; src: url("BricolageGrotesque-700.woff2") format("woff2"); font-weight: 600 800; font-style: normal; font-display: swap; }
