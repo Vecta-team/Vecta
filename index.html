@@ -3,96 +3,231 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vecta Academy</title>
-<meta name="description" content="Sharp maths and science lessons that use a fraction of video's data.">
+<title>Vecta: crystal-clear lessons for the price of a voice note</title>
+<meta name="description" content="Vecta sends lessons as the teacher's voice plus a tiny file of drawing instructions. The student's phone draws the board itself, sharp on any screen, using much less data than video.">
+<meta property="og:title" content="Vecta: crystal-clear lessons for the price of a voice note">
+<meta property="og:description" content="Maths and science lessons sent as a voice plus drawing instructions, not video. Sharp on any phone, about 5x smaller than 144p video in our test.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://vecta-team.github.io/Vecta/icon-512.png">
 <meta name="theme-color" content="#1f5fd6">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="katex.min.css">
 <link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body class="site">
+
+<header class="nav wrap">
+  <a class="brand" href="./" aria-label="Vecta home">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="10.5" fill="#1f5fd6"/><path d="M8 16h32M8 24h32M8 32h32M16 8v32M24 8v32M32 8v32" stroke="#fff" stroke-opacity=".22"/><path d="M13.5 13.5 24 34.5l10.5-21" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="word">Vecta<span>.</span></span>
+  </a>
+  <nav class="navlinks" aria-label="Sections">
+    <a href="#how">How it works</a>
+    <a href="#results">Results</a>
+    <a href="#mission">Mission</a>
+    <a href="#team">Team</a>
+  </nav>
+  <a class="btn primary" href="app.html">Open the app</a>
+</header>
+
 <main>
-  <div class="topbar">
-    <a class="brand" href="./">Vecta<span>.</span></a>
-    <span class="status" id="status">Checking offline mode…</span>
+
+<!-- ============ HERO: tagline + the working player ============ -->
+<section class="hero wrap">
+  <div class="hero-text">
+    <h1>Crystal-clear lessons for the price of a <span class="mark">voice note.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 8C40 2 80 11 120 6s60-2 78 1"/></svg></span></h1>
+    <p class="lede">Vecta sends a lesson as the teacher's voice plus a tiny file of drawing instructions, not video. The student's phone draws the board itself, so every equation stays sharp while using far less data.</p>
+    <div class="row">
+      <button class="btn primary big" id="heroPlay" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>Play the lesson</button>
+      <a class="btn big" href="app.html">Open the lesson app</a>
+    </div>
   </div>
 
-  <!-- Library -->
-  <section id="library" class="lib" style="display:grid;gap:18px">
-    <div class="row spread">
-      <div style="display:grid;gap:2px">
-        <h2 class="section">Lessons</h2>
-        <p class="sub">Each lesson is the teacher's voice plus a tiny drawing file. Your phone draws the board itself.</p>
-      </div>
-      <div class="row">
-        <a class="btn" href="results.html"><svg viewBox="0 0 24 24"><path d="M4 19h16v2H4zM6 10h3v7H6zM11 6h3v11h-3zM16 13h3v4h-3z"/></svg>Test results</a>
-        <a class="btn primary" href="record.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>Record a lesson</a>
-      </div>
-    </div>
-    <div class="dl" id="dl">
-      <div class="row spread">
-        <div style="display:grid;gap:2px;min-width:0">
-          <b id="dlTitle">Download lessons for offline</b>
-          <span class="sub" id="dlInfo">Checking…</span>
-        </div>
-        <button class="btn primary" id="dlBtn" type="button" disabled><svg viewBox="0 0 24 24"><path d="M11 4h2v9l3-3 1.4 1.4L12 16.8 6.6 11.4 8 10l3 3zM5 18h14v2H5z"/></svg><span id="dlLabel">Download all</span></button>
-      </div>
-      <div class="bar" id="dlBar" hidden aria-hidden="true"><i class="draw" id="dlFill" style="width:0%"></i></div>
-    </div>
-    <div class="grid" id="builtin"></div>
-
-    <div class="row spread">
-      <div style="display:grid;gap:2px">
-        <h2 class="section">My lessons</h2>
-        <p class="sub">Lessons you recorded or received. They stay on this phone.</p>
-      </div>
-      <label class="btn" for="importFile"><svg viewBox="0 0 24 24"><path d="M11 4h2v9l3-3 1.4 1.4L12 16.8 6.6 11.4 8 10l3 3zM5 18h14v2H5z"/></svg>Open a .vecta file</label>
-      <input type="file" id="importFile" accept=".vecta,.zip,application/zip" hidden>
-    </div>
-    <div id="importMsg" hidden></div>
-    <div class="grid" id="mine"></div>
-  </section>
-
-  <!-- Player -->
-  <section id="playerView" hidden style="display:grid;gap:14px">
-    <div class="row"><a class="btn" href="#" id="backToList"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>All lessons</a></div>
-    <div id="loadMsg" hidden></div>
-    <div class="player">
-      <div class="player-head"><h2 id="pTitle">Lesson</h2><span class="meta" id="pMeta"></span></div>
+  <div class="player" id="demo">
+    <div class="player-head"><h2>Area of a circle</h2><span class="meta">Live demo · real lesson, not a video</span></div>
+    <div class="stage">
       <div id="board"></div>
-      <div class="caption" id="caption" aria-live="polite">Press play. The board draws itself in time with the voice.</div>
-      <div class="controls">
-        <button class="btn primary" id="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
-        <button class="btn" id="back10" type="button" aria-label="Back 10 seconds"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>10s</button>
-        <input class="scrub" id="scrub" type="range" min="0" max="60" step="0.05" value="0" aria-label="Lesson position">
-        <span class="time" id="time">0:00 / 0:00</span>
-        <button class="btn" id="cc" type="button" aria-pressed="true">CC</button>
-      </div>
-      <div class="weight">
-        <div class="line1"><span>Download size for this lesson</span><b id="totalKB">–</b></div>
-        <div class="bar" aria-hidden="true"><i class="voice" id="barVoice"></i><i class="draw" id="barDraw"></i></div>
-        <div class="legend">
-          <span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="voiceKB">–</b></span>
-          <span style="--c: var(--accent)">Drawings <b id="drawKB">–</b></span>
-          <span id="perHour"></span>
-        </div>
-        <a href="results.html" style="font-size:14px">See how this compares with video →</a>
-      </div>
-      <div class="actions">
-        <button class="btn" id="shareBtn" type="button"><svg viewBox="0 0 24 24"><path d="M11 16h2V7l3 3 1.4-1.4L12 3.2 6.6 8.6 8 10l3-3zM5 18h14v2H5z"/></svg>Save as .vecta file</button>
-        <button class="btn danger" id="deleteBtn" type="button" hidden>Delete</button>
-        <span class="hint" id="deleteConfirm" hidden>Tap Delete again to remove this lesson.</span>
-        <span class="hint" id="shareMsg" hidden></span>
+      <button class="bigplay" id="bigPlay" type="button" aria-label="Play the lesson"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+    </div>
+    <div class="caption" id="caption" aria-live="polite">Press play. Your device draws the board in time with the voice.</div>
+    <div class="controls">
+      <button class="btn primary" id="play" type="button" aria-label="Play" disabled><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+      <input class="scrub" id="scrub" type="range" min="0" max="49" step="0.05" value="0" aria-label="Lesson position">
+      <span class="time" id="time">0:00 / 0:48</span>
+      <button class="btn" id="cc" type="button" aria-pressed="true">CC</button>
+    </div>
+    <div class="weight">
+      <div class="line1"><span>This whole lesson</span><b id="totalKB">–</b></div>
+      <div class="bar" aria-hidden="true"><i class="voice" id="barVoice"></i><i class="draw" id="barDraw"></i></div>
+      <div class="legend">
+        <span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="voiceKB">–</b></span>
+        <span style="--c: var(--accent)">Drawings <b id="drawKB">–</b></span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="facts wrap" aria-label="Headline results">
+  <div><b>5× smaller</b><span>than the same lesson as 144p video (103 KB vs 523 KB)</span></div>
+  <div><b>175× smaller</b><span>board: 1.1 KB of drawings vs 192 KB of video pixels</span></div>
+  <div><b>100% vs 3%</b><span>of small text read correctly: Vecta vs 144p video</span></div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="block wrap" id="problem">
+  <div class="split">
+    <div>
+      <h2>At 144p, video saves data and loses the maths.</h2>
+      <p>Many secondary students learn maths and science on low-cost phones with expensive prepaid data. To make that data last, they watch lesson videos at 144p, the lowest quality.</p>
+      <p>Big headings survive. The small labels, symbols and worked steps that carry the actual maths turn into blur.</p>
+    </div>
+    <div class="stat">
+      <b>2.2 GB</b>
+      <span>Average mobile data used per month in low-income countries.</span>
+      <small>Source: ITU, Facts and Figures 2025</small>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="block wrap" id="how">
+  <h2>A lesson is a voice note and a list of pen moves.</h2>
+  <ol class="steps">
+    <li><b>Record</b><p>A teacher talks and draws in Vecta's record mode, with pen, text and equation tools. Vecta saves the voice and the time of every stroke. No video is made.</p></li>
+    <li><b>Send</b><p>The lesson travels as compressed speech (16 kbps Opus) plus about 1 KB of drawing instructions.</p></li>
+    <li><b>Draw</b><p>The student's phone redraws the board in time with the voice. Text and equations are real text, so they stay sharp on any screen. Saved lessons play with no signal.</p></li>
+  </ol>
+  <div class="instr">
+    <figure>
+      <figcaption>One instruction from the demo lesson</figcaption>
+      <pre><code>{"t": 14.81, "type": "math",
+ "value": "A = \\pi r^2",
+ "x": 72, "y": 42, "size": 9}</code></pre>
+    </figure>
+    <div class="arrow" aria-hidden="true">→</div>
+    <figure>
+      <figcaption>What the phone draws, 14.81 seconds into the voice</figcaption>
+      <div class="formula" id="formulaOut">A = πr²</div>
+    </figure>
+  </div>
+  <p class="links"><a href="record.html">Try record mode →</a></p>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="block wrap" id="results">
+  <h2>Measured, not estimated.</h2>
+  <p class="intro">We built the same 49-second lesson, “Area of a circle”, twice with the teacher's recorded voice: once as a Vecta lesson and once as a 144p video.</p>
+
+  <div class="panel">
+    <h3>Data for the whole lesson</h3>
+    <div class="bars" role="img" aria-label="144p video: 523 kilobytes. Vecta: 103 kilobytes.">
+      <div class="barrow"><span>144p video</span><div class="track"><i style="width:100%"></i></div><b>523 KB</b></div>
+      <div class="barrow us"><span>Vecta</span><div class="track"><i style="width:19.7%"></i></div><b>103 KB</b></div>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th></th><th>144p video</th><th>Vecta</th></tr></thead>
+      <tbody>
+        <tr><td>Whole lesson</td><td>523 KB</td><td>103 KB <em>about 5× smaller</em></td></tr>
+        <tr><td>Board</td><td>192 KB of pixels</td><td>1.1 KB of drawings <em>about 175× smaller</em></td></tr>
+        <tr><td>Sound</td><td>293 KB (48 kbps AAC)</td><td>101 KB (16 kbps Opus)</td></tr>
+        <tr><td>Per hour of lessons</td><td>38.7 MB</td><td>7.6 MB</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><b>The fair caveat:</b> part of the 5× comes from the sound, because Vecta uses a smaller voice format. When we gave both versions the same voice file, the best case for video, Vecta was still 1.7× to 3.9× smaller (robot-voice version of the lesson, 144p to 720p).</p>
+  </div>
+
+  <div class="panel">
+    <h3>Can small text still be read?</h3>
+    <p>We set text at 3% of screen height and asked OCR software to read it back. It read <b>100%</b> of the words and numbers from Vecta and <b>3%</b> from 144p video.</p>
+    <div class="compare">
+      <figure><figcaption><b>Vecta</b>drawn by the phone</figcaption><img src="cmp_vecta.png" alt="Four lines of maths text, perfectly sharp" width="800" height="196" loading="lazy"></figure>
+      <figure><figcaption><b>144p video</b>stretched to the screen</figcaption><img src="cmp_144.png" alt="The same text from 144p video, too blurred to read the numbers" width="800" height="196" loading="lazy"></figure>
+    </div>
+    <p class="note">Large headings and equations survive 144p. Small labels and symbols do not. OCR stands in for human eyes until our student test is done.</p>
+  </div>
+
+  <div class="panel todo">
+    <h3>What we have not tested yet</h3>
+    <ul>
+      <li>A readability test with real students</li>
+      <li>A cheap Android phone in real use</li>
+      <li>A filmed whiteboard lesson as the video benchmark</li>
+      <li>A pilot with an NGO or school partner</li>
+    </ul>
+  </div>
+  <p class="links"><a href="results.html">See the full test results →</a></p>
+</section>
+
+<!-- ============ MISSION, VISION, VALUES ============
+     TEAM: the wording in this section is a DRAFT. Conrad rules say AI must not
+     be the main author of your story. Rewrite it in your own words. -->
+<section class="block wrap" id="mission">
+  <div class="mv">
+    <div>
+      <h2>Mission</h2>
+      <p class="big">Make maths and science lessons clear and affordable for students who pay for every megabyte.</p>
+    </div>
+    <div>
+      <h2>Vision</h2>
+      <p class="big">A student's phone or data plan should never decide whether they can read the board.</p>
+    </div>
+  </div>
+  <h2 class="minor">What we stand for</h2>
+  <div class="values">
+    <div><b>Free for students</b><p>Vecta is a nonprofit. Students never pay for lessons.</p></div>
+    <div><b>Honest numbers</b><p>We publish only what we have measured, and we say what we have not tested yet.</p></div>
+    <div><b>Cheapest phone first</b><p>Small downloads and offline play come before extra features.</p></div>
+    <div><b>No tracking</b><p>No analytics and no trackers. Lessons you record stay on your phone.</p></div>
+  </div>
+  <div class="model">
+    <h2 class="minor">How Vecta pays for itself</h2>
+    <p>Lessons stay free for students. We plan to fund Vecta through grants, NGO partners, and by licensing the player to edtech companies.</p>
+  </div>
+</section>
+
+<!-- ============ TEAM + CONTACT ============ -->
+<section class="block wrap" id="team">
+  <div class="split">
+    <div>
+      <h2>The team</h2>
+      <p>We are five high-school students entering the 2026–27 Conrad Challenge in the Cyber-Technology &amp; Security category.</p>
+      <!-- TEAM: add your names here. Copy one line per person and remove the comment marks:
+      <ul class="people">
+        <li><b>First name</b><span>Role, for example "Player and recording"</span></li>
+      </ul>
+      -->
+    </div>
+    <div id="contact">
+      <h2>Contact</h2>
+      <p>Teachers, NGOs, schools and edtech teams: we would like to hear from you.</p>
+      <!-- TEAM: add a team email here, for example
+           <p><a href="mailto:TEAM-EMAIL">TEAM-EMAIL</a></p> -->
+      <p><a class="btn" href="https://github.com/vecta-team/Vecta">Vecta on GitHub</a></p>
+    </div>
+  </div>
+</section>
+
 </main>
-<audio id="audio" preload="auto"></audio>
-<script src="katex.min.js"></script>
-<script src="board.js"></script>
-<script src="store.js"></script>
-<script src="player.js"></script>
+
+<footer class="foot wrap">
+  <div class="row spread">
+    <span class="brand">Vecta<span>.</span></span>
+    <nav class="row" aria-label="Pages">
+      <a href="app.html">Lesson app</a>
+      <a href="record.html">Record a lesson</a>
+      <a href="results.html">Test results</a>
+    </nav>
+  </div>
+  <p id="pageKB" hidden></p>
+  <p>Built by the Vecta team. Website and app code written with help from Claude, an AI assistant made by Anthropic. Equations are drawn with <a href="KaTeX-LICENSE.txt">KaTeX</a>; headings use <a href="Bricolage-LICENSE.txt">Bricolage Grotesque</a>. This site uses no analytics or trackers.</p>
+</footer>
+
+<audio id="audio" preload="none"></audio>
+<script src="katex.min.js" defer></script>
+<script src="board.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
