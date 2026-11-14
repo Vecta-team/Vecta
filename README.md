@@ -21,7 +21,7 @@ GitHub Pages from the `main` branch. `CLAUDE.md` explains every file.
 ## Before you edit
 
 - After changing any file, change the cache name at the top of `sw.js`
-  (for example the date in `vecta-app-site-2026-11-12`). Otherwise phones that
+  (for example the date in `vecta-app-site-2026-11-14`). Otherwise phones that
   saved the app for offline use keep showing the old version.
 - Use only the measured numbers listed in `CLAUDE.md`.
 - Search `index.html` for `TEAM:` to find the places waiting for your own
@@ -30,5 +30,5 @@ GitHub Pages from the `main` branch. `CLAUDE.md` explains every file.
 ## Credits
 
 Built by the Vecta team. Website and app code written with help from Claude,
-an AI assistant made by Anthropic. Equations use KaTeX (MIT licence). Headings
-use Bricolage Grotesque (SIL Open Font License).
+an AI assistant made by Anthropic. Equations use KaTeX (MIT licence). Fonts:
+Lexend and Patrick Hand (SIL Open Font License).

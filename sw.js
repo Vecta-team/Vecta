@@ -1,5 +1,5 @@
 /* Vecta offline support. */
-const CACHE = "vecta-app-site-2026-11-12";   // the site and app: saved the first time the app page is opened. Change this name whenever any file below changes.
+const CACHE = "vecta-app-site-2026-11-14";   // the site and app: saved the first time the app page is opened. Change this name whenever any file below changes.
 const LESSONS = "vecta-lessons-a507090628";  // lessons: saved by "Download all lessons" or when played
 const FILES = [
  "./",
@@ -23,7 +23,8 @@ const FILES = [
  "KaTeX_Size3-Regular.woff2",
  "KaTeX_Size4-Regular.woff2",
  "KaTeX_Typewriter-Regular.woff2",
- "BricolageGrotesque-700.woff2",
+ "Lexend-Variable.woff2",
+ "PatrickHand-Regular.woff2",
  "app.css",
  "app.html",
  "benchmark.json",

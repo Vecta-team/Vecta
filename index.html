@@ -46,87 +46,109 @@
     </div>
   </div>
 
-  <div class="player" id="demo">
-    <div class="player-head"><h2>Area of a circle</h2><span class="meta">Live demo · real lesson, not a video</span></div>
-    <div class="stage">
-      <div id="board"></div>
-      <button class="bigplay" id="bigPlay" type="button" aria-label="Play the lesson"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></button>
-    </div>
-    <div class="caption" id="caption" aria-live="polite">Press play. Your device draws the board in time with the voice.</div>
-    <div class="controls">
-      <button class="btn primary" id="play" type="button" aria-label="Play" disabled><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
-      <input class="scrub" id="scrub" type="range" min="0" max="49" step="0.05" value="0" aria-label="Lesson position">
-      <span class="time" id="time">0:00 / 0:48</span>
-      <button class="btn" id="cc" type="button" aria-pressed="true">CC</button>
-    </div>
-    <div class="weight">
-      <div class="line1"><span>This whole lesson</span><b id="totalKB">–</b></div>
-      <div class="bar" aria-hidden="true"><i class="voice" id="barVoice"></i><i class="draw" id="barDraw"></i></div>
-      <div class="legend">
-        <span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="voiceKB">–</b></span>
-        <span style="--c: var(--accent)">Drawings <b id="drawKB">–</b></span>
+  <div class="hero-demo">
+    <p class="hand note-demo" data-draw>real lesson, not a video
+      <svg viewBox="0 0 60 44" aria-hidden="true"><path pathLength="1" d="M4 4c22 0 40 10 44 34"/><path pathLength="1" d="M38 28l10 11 7-13"/></svg>
+    </p>
+    <div class="player" id="demo">
+      <div class="player-head"><h2>Area of a circle</h2><span class="meta">Live demo</span></div>
+      <div class="stage">
+        <div id="board"></div>
+        <button class="bigplay" id="bigPlay" type="button" aria-label="Play the lesson"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+      </div>
+      <div class="caption" id="caption" aria-live="polite">Press play. Your device draws the board in time with the voice.</div>
+      <div class="controls">
+        <button class="btn primary" id="play" type="button" aria-label="Play" disabled><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+        <input class="scrub" id="scrub" type="range" min="0" max="49" step="0.05" value="0" aria-label="Lesson position">
+        <span class="time" id="time">0:00 / 0:48</span>
+        <button class="btn" id="cc" type="button" aria-pressed="true">CC</button>
+      </div>
+      <div class="weight">
+        <div class="line1"><span>This whole lesson</span><b id="totalKB">–</b></div>
+        <div class="bar" aria-hidden="true"><i class="voice" id="barVoice"></i><i class="draw" id="barDraw"></i></div>
+        <div class="legend">
+          <span style="--c: color-mix(in srgb, var(--accent) 45%, var(--grid))">Voice <b id="voiceKB">–</b></span>
+          <span style="--c: var(--accent)">Drawings <b id="drawKB">–</b></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="facts wrap" aria-label="Headline results">
-  <div><b>5× smaller</b><span>than the same lesson as 144p video (103 KB vs 523 KB)</span></div>
-  <div><b>175× smaller</b><span>board: 1.1 KB of drawings vs 192 KB of video pixels</span></div>
-  <div><b>100% vs 3%</b><span>of small text read correctly: Vecta vs 144p video</span></div>
+<section class="short wrap" aria-label="Headline results">
+  <p class="lead-fact"><b>5× smaller</b><span>than the same lesson as 144p video (103 KB vs 523 KB)</span></p>
+  <div class="more-facts">
+    <p><b>175× smaller</b><span>board: 1.1 KB of drawings vs 192 KB of video pixels</span></p>
+    <p><b>100% vs 3%</b><span>of small text read correctly: Vecta vs 144p video</span></p>
+  </div>
 </section>
 
 <!-- ============ PROBLEM ============ -->
-<section class="block wrap" id="problem">
-  <div class="split">
-    <div>
-      <h2>At 144p, video saves data and loses the maths.</h2>
-      <p>Many secondary students learn maths and science on low-cost phones with expensive prepaid data. To make that data last, they watch lesson videos at 144p, the lowest quality.</p>
-      <p>Big headings survive. The small labels, symbols and worked steps that carry the actual maths turn into blur.</p>
-    </div>
-    <div class="stat">
-      <b>2.2 GB</b>
-      <span>Average mobile data used per month in low-income countries.</span>
-      <small>Source: ITU, Facts and Figures 2025</small>
-    </div>
+<section class="problem wrap" id="problem">
+  <h2>At 144p, video saves data and loses <span class="blurred">the maths.</span></h2>
+  <div class="problem-text">
+    <p>Many secondary students learn maths and science on low-cost phones with expensive prepaid data. To make that data last, they watch lesson videos at 144p, the lowest quality.</p>
+    <p>Big headings survive. The small labels, symbols and worked steps that carry the actual maths turn into blur.</p>
   </div>
+  <aside class="margin-fig">
+    <b>2.2 GB</b>
+    <span>Average mobile data used per month in low-income countries.</span>
+    <small>Source: ITU, Facts and Figures 2025</small>
+  </aside>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section class="block wrap" id="how">
-  <h2>A lesson is a voice note and a list of pen moves.</h2>
-  <ol class="steps">
-    <li><b>Record</b><p>A teacher talks and draws in Vecta's record mode, with pen, text and equation tools. Vecta saves the voice and the time of every stroke. No video is made.</p></li>
-    <li><b>Send</b><p>The lesson travels as compressed speech (16 kbps Opus) plus about 1 KB of drawing instructions.</p></li>
-    <li><b>Draw</b><p>The student's phone redraws the board in time with the voice. Text and equations are real text, so they stay sharp on any screen. Saved lessons play with no signal.</p></li>
-  </ol>
-  <div class="instr">
-    <figure>
-      <figcaption>One instruction from the demo lesson</figcaption>
-      <pre><code>{"t": 14.81, "type": "math",
- "value": "A = \\pi r^2",
- "x": 72, "y": 42, "size": 9}</code></pre>
-    </figure>
-    <div class="arrow" aria-hidden="true">→</div>
-    <figure>
-      <figcaption>What the phone draws, 14.81 seconds into the voice</figcaption>
-      <div class="formula" id="formulaOut">A = πr²</div>
-    </figure>
+<!-- ============ HOW IT WORKS (the dark "blueprint" band) ============ -->
+<section class="band" id="how">
+  <div class="wrap how">
+    <h2>A lesson is a voice note and a list of pen moves.</h2>
+
+    <ol class="story">
+      <li><b>Record</b><p>A teacher talks and draws in Vecta's record mode, with pen, text and equation tools. Vecta saves the voice and the time of every stroke. No video is made.</p></li>
+      <li><b>Send</b><p>The lesson travels as compressed speech (16 kbps Opus) plus about 1 KB of drawing instructions.</p></li>
+      <li><b>Draw</b><p>The student's phone redraws the board in time with the voice. Text and equations are real text, so they stay sharp on any screen. Saved lessons play with no signal.</p></li>
+    </ol>
+
+    <!-- The x-ray: the demo lesson's real instructions next to the board they draw. -->
+    <div class="xray" id="xray">
+      <figure class="xfeed">
+        <figcaption>Instructions from the demo lesson</figcaption>
+        <ol id="feed" aria-label="Drawing instructions"><li class="now"><code>{"t":14.81,"type":"math","value":"A = \\pi r^2","x":72,"y":42,"size":9}</code></li></ol>
+      </figure>
+      <figure class="xdraw">
+        <figcaption>What the phone draws, <b id="xtime">14.81</b> seconds into the voice</figcaption>
+        <div class="xpaper"><div id="xboard"></div></div>
+        <label class="xslide"><span>Drag through the lesson</span><input class="scrub" id="xscrub" type="range" min="0" max="49" step="0.05" value="15.2"></label>
+      </figure>
+    </div>
+    <p class="links"><a href="record.html">Try record mode →</a></p>
   </div>
-  <p class="links"><a href="record.html">Try record mode →</a></p>
 </section>
 
 <!-- ============ RESULTS ============ -->
-<section class="block wrap" id="results">
+<section class="results wrap" id="results">
   <h2>Measured, not estimated.</h2>
   <p class="intro">We built the same 49-second lesson, “Area of a circle”, twice with the teacher's recorded voice: once as a Vecta lesson and once as a 144p video.</p>
 
-  <div class="panel">
-    <h3>Data for the whole lesson</h3>
-    <div class="bars" role="img" aria-label="144p video: 523 kilobytes. Vecta: 103 kilobytes.">
-      <div class="barrow"><span>144p video</span><div class="track"><i style="width:100%"></i></div><b>523 KB</b></div>
-      <div class="barrow us"><span>Vecta</span><div class="track"><i style="width:19.7%"></i></div><b>103 KB</b></div>
+  <!-- To-scale chart: one square = 1 KB. site.js draws the squares from data-parts. -->
+  <figure class="scale" role="img" aria-label="Drawn to scale, one square per kilobyte. 144p video: 523 squares. Vecta: 103 squares, of which the drawings are one.">
+    <figcaption><h3>Data for the whole lesson</h3><span class="key"><i class="sq draw"></i> one square = 1 KB</span></figcaption>
+    <div class="scale-row">
+      <p class="scale-label"><b>144p video</b><span>523 KB</span></p>
+      <div>
+        <div class="units" data-parts='[["snd",293],["pix",192],["rest",38]]'></div>
+        <p class="legend2"><span><i class="sq snd"></i>Sound</span><span><i class="sq pix"></i>Board pixels</span><span><i class="sq rest"></i>Rest of the file</span></p>
+      </div>
     </div>
+    <div class="scale-row us">
+      <p class="scale-label"><b>Vecta</b><span>103 KB</span></p>
+      <div>
+        <div class="units" data-parts='[["voice",102]]'><span class="hand note-sq"><i class="sq draw"></i>← every drawing in the lesson</span></div>
+        <p class="legend2"><span><i class="sq voice"></i>Voice</span><span><i class="sq draw"></i>Drawings</span></p>
+      </div>
+    </div>
+  </figure>
+
+  <div class="ledger">
     <div class="tablewrap"><table>
       <thead><tr><th></th><th>144p video</th><th>Vecta</th></tr></thead>
       <tbody>
@@ -136,20 +158,28 @@
         <tr><td>Per hour of lessons</td><td>38.7 MB</td><td>7.6 MB</td></tr>
       </tbody>
     </table></div>
-    <p class="note"><b>The fair caveat:</b> part of the 5× comes from the sound, because Vecta uses a smaller voice format. When we gave both versions the same voice file, the best case for video, Vecta was still 1.7× to 3.9× smaller (robot-voice version of the lesson, 144p to 720p).</p>
+    <p class="caveat"><b class="hand">The fair caveat:</b> part of the 5× comes from the sound, because Vecta uses a smaller voice format. When we gave both versions the same voice file, the best case for video, Vecta was still 1.7× to 3.9× smaller (robot-voice version of the lesson, 144p to 720p).</p>
   </div>
 
-  <div class="panel">
-    <h3>Can small text still be read?</h3>
-    <p>We set text at 3% of screen height and asked OCR software to read it back. It read <b>100%</b> of the words and numbers from Vecta and <b>3%</b> from 144p video.</p>
-    <div class="compare">
-      <figure><figcaption><b>Vecta</b>drawn by the phone</figcaption><img src="cmp_vecta.png" alt="Four lines of maths text, perfectly sharp" width="800" height="196" loading="lazy"></figure>
-      <figure><figcaption><b>144p video</b>stretched to the screen</figcaption><img src="cmp_144.png" alt="The same text from 144p video, too blurred to read the numbers" width="800" height="196" loading="lazy"></figure>
+  <div class="read">
+    <div class="read-text">
+      <h3>Can small text still be read?</h3>
+      <p class="score" aria-hidden="true"><b>100%</b><i>vs</i><b class="blurred">3%</b></p>
+      <p>We set text at 3% of screen height and asked OCR software to read it back. It read <b>100%</b> of the words and numbers from Vecta and <b>3%</b> from 144p video.</p>
+      <p class="note">Large headings and equations survive 144p. Small labels and symbols do not. OCR stands in for human eyes until our student test is done.</p>
     </div>
-    <p class="note">Large headings and equations survive 144p. Small labels and symbols do not. OCR stands in for human eyes until our student test is done.</p>
+    <figure class="cmp">
+      <div class="cmp-frame" id="cmp" style="--pos: 50%">
+        <img src="cmp_vecta.png" alt="Four lines of maths text, perfectly sharp" width="800" height="196" loading="lazy">
+        <img class="top" src="cmp_144.png" alt="The same text from 144p video, too blurred to read the numbers" width="800" height="196" loading="lazy">
+        <span class="cmp-handle" aria-hidden="true"></span>
+        <input type="range" min="0" max="100" value="50" id="cmpRange" aria-label="Slide to compare Vecta with 144p video">
+      </div>
+      <figcaption><span><b>Vecta</b> drawn by the phone</span><span class="hand">← drag →</span><span><b>144p video</b> stretched to the screen</span></figcaption>
+    </figure>
   </div>
 
-  <div class="panel todo">
+  <div class="todo">
     <h3>What we have not tested yet</h3>
     <ul>
       <li>A readability test with real students</li>
@@ -164,49 +194,48 @@
 <!-- ============ MISSION, VISION, VALUES ============
      TEAM: the wording in this section is a DRAFT. Conrad rules say AI must not
      be the main author of your story. Rewrite it in your own words. -->
-<section class="block wrap" id="mission">
-  <div class="mv">
-    <div>
-      <h2>Mission</h2>
-      <p class="big">Make maths and science lessons clear and affordable for students who pay for every megabyte.</p>
-    </div>
-    <div>
-      <h2>Vision</h2>
-      <p class="big">A student's phone or data plan should never decide whether they can read the board.</p>
-    </div>
+<section class="mission wrap" id="mission">
+  <div class="mis">
+    <h2>Mission</h2>
+    <p>Make maths and science lessons clear and affordable for students who pay for every megabyte.</p>
   </div>
-  <h2 class="minor">What we stand for</h2>
-  <div class="values">
-    <div><b>Free for students</b><p>Vecta is a nonprofit. Students never pay for lessons.</p></div>
-    <div><b>Honest numbers</b><p>We publish only what we have measured, and we say what we have not tested yet.</p></div>
-    <div><b>Cheapest phone first</b><p>Small downloads and offline play come before extra features.</p></div>
-    <div><b>No tracking</b><p>No analytics and no trackers. Lessons you record stay on your phone.</p></div>
+  <div class="vis">
+    <h2>Vision</h2>
+    <p>A student's phone or data plan should never decide whether they can read the board.</p>
+  </div>
+
+  <div class="stand">
+    <h2>What we stand for</h2>
+    <dl>
+      <div><dt>Free for students</dt><dd>Vecta is a nonprofit. Students never pay for lessons.</dd></div>
+      <div><dt>Honest numbers</dt><dd>We publish only what we have measured, and we say what we have not tested yet.</dd></div>
+      <div><dt>Cheapest phone first</dt><dd>Small downloads and offline play come before extra features.</dd></div>
+      <div><dt>No tracking</dt><dd>No analytics and no trackers. Lessons you record stay on your phone.</dd></div>
+    </dl>
   </div>
   <div class="model">
-    <h2 class="minor">How Vecta pays for itself</h2>
+    <h2>How Vecta pays for itself</h2>
     <p>Lessons stay free for students. We plan to fund Vecta through grants, NGO partners, and by licensing the player to edtech companies.</p>
   </div>
 </section>
 
 <!-- ============ TEAM + CONTACT ============ -->
-<section class="block wrap" id="team">
-  <div class="split">
-    <div>
-      <h2>The team</h2>
-      <p>We are five high-school students entering the 2026–27 Conrad Challenge in the Cyber-Technology &amp; Security category.</p>
-      <!-- TEAM: add your names here. Copy one line per person and remove the comment marks:
-      <ul class="people">
-        <li><b>First name</b><span>Role, for example "Player and recording"</span></li>
-      </ul>
-      -->
-    </div>
-    <div id="contact">
-      <h2>Contact</h2>
-      <p>Teachers, NGOs, schools and edtech teams: we would like to hear from you.</p>
-      <!-- TEAM: add a team email here, for example
-           <p><a href="mailto:TEAM-EMAIL">TEAM-EMAIL</a></p> -->
-      <p><a class="btn" href="https://github.com/vecta-team/Vecta">Vecta on GitHub</a></p>
-    </div>
+<section class="people-sec wrap" id="team">
+  <div class="team">
+    <h2>The team</h2>
+    <p>We are five high-school students entering the 2026–27 Conrad Challenge in the Cyber-Technology &amp; Security category.</p>
+    <!-- TEAM: add your names here. Copy one line per person and remove the comment marks:
+    <ul class="people">
+      <li><b>First name</b><span>Role, for example "Player and recording"</span></li>
+    </ul>
+    -->
+  </div>
+  <div class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Teachers, NGOs, schools and edtech teams: we would like to hear from you.</p>
+    <!-- TEAM: add a team email here, for example
+         <p><a href="mailto:TEAM-EMAIL">TEAM-EMAIL</a></p> -->
+    <p><a class="btn" href="https://github.com/vecta-team/Vecta">Vecta on GitHub</a></p>
   </div>
 </section>
 
@@ -222,7 +251,7 @@
     </nav>
   </div>
   <p id="pageKB" hidden></p>
-  <p>Built by the Vecta team. Website and app code written with help from Claude, an AI assistant made by Anthropic. Equations are drawn with <a href="KaTeX-LICENSE.txt">KaTeX</a>; headings use <a href="Bricolage-LICENSE.txt">Bricolage Grotesque</a>. This site uses no analytics or trackers.</p>
+  <p>Built by the Vecta team. Website and app code written with help from Claude, an AI assistant made by Anthropic. Equations are drawn with <a href="KaTeX-LICENSE.txt">KaTeX</a>; the fonts are <a href="Lexend-LICENSE.txt">Lexend</a> and <a href="PatrickHand-LICENSE.txt">Patrick Hand</a>. This site uses no analytics or trackers.</p>
 </footer>
 
 <audio id="audio" preload="none"></audio>

@@ -1,17 +1,20 @@
 /* Vecta: one centred column, squared-paper board, teacher's-blue marker accent. */
 :root {
-  --page: #eef1f5;
+  --page: #f2f5fb;
   --surface: #ffffff;
-  --paper: #fbfcfe;
-  --grid: #e3e8f0;
-  --ink: #1b2430;
-  --muted: #5b6675;
-  --line: #d4dbe5;
-  --accent: #1f5fd6;
+  --paper: #fbfcff;
+  --grid: #e0e7f3;
+  --ink: #0d1b33;       /* navy ink: all text */
+  --muted: #54627a;
+  --line: #d3dbe9;
+  --accent: #1f5fd6;    /* brand blue: the marker and the main action */
   --accent-ink: #ffffff;
+  --tint: #e8f0ff;      /* pale blue: paper that is being drawn on */
+  --navy: #0c1d3d;      /* the dark "blueprint" band on the front page */
+  --video: #9aa3b2;     /* grey always means video */
   --good: #1f8a5b;
   --bad: #c2412d;
-  --display: "Bricolage Grotesque", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --display: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   color-scheme: light;
@@ -20,6 +23,7 @@
   :root {
     --page: #0c0f14; --surface: #151a22; --paper: #11161d; --grid: #1e2530;
     --ink: #e6ebf2; --muted: #9aa6b6; --line: #2a323e; --accent: #73a6ff; --accent-ink: #0c0f14;
+    --tint: #16233f; --navy: #101b33; --video: #6b7585;
     --good: #4cc38a; --bad: #ff8a73; color-scheme: dark;
   }
 }
@@ -123,5 +127,5 @@ h2.section { font-family: var(--display); font-size: 20px; margin: 0; text-wrap:
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; }
 @media (max-width: 520px) { .brand { font-size: 22px; } .player-head h2 { font-size: 17px; } }
 
-/* Heading font (Bricolage Grotesque 700, 22 KB, hosted here so it works offline). */
-@font-face { font-family: "Bricolage Grotesque"; src: url("BricolageGrotesque-700.woff2") format("woff2"); font-weight: 600 800; font-style: normal; font-display: swap; }
+/* Heading font: Lexend (one 40 KB file with every weight, hosted here so it works offline). */
+@font-face { font-family: "Lexend"; src: url("Lexend-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
