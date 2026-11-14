@@ -34,7 +34,7 @@ much less data.
 
 | File | What it is |
 |---|---|
-| `index.html` + `site.js` + `site.css` | Landing page (front page): problem, how it works, live demo, results, mission, team, contact. `site.js` plays one real lesson with `board.js`. It does not register the service worker, so a first visit stays small. |
+| `index.html` + `site.js` + `site.css` | Landing page (front page): problem, how it works, live demo, results, mission, team, contact. `site.js` plays one real lesson with `board.js`, runs the "x-ray" (a second board beside the lesson's real instructions), draws the one-square-per-KB chart and the drag-to-compare slider. It does not register the service worker, so a first visit stays small. |
 | `app.html` + `player.js` | Lesson library and player. Routes: `#lesson/<id>` (built-in), `#mine/<id>` (saved on the phone). Old links to `./#lesson/<id>` are redirected here by `site.js`. |
 | `record.html` + `record.js` | Record mode: microphone + pen, text and equation tools. Saves a lesson to IndexedDB or as a `.vecta` file. |
 | `results.html` + `results.js` + `benchmark.json` | Test results page (measured numbers, charts, comparison images `cmp_*.png`). |
@@ -42,7 +42,8 @@ much less data.
 | `store.js` | IndexedDB storage and the `.vecta` file format (a plain zip: `lesson.json` + audio). |
 | `sw.js` | Offline service worker. App files are cached on first visit; lesson files are cached by "Download all" or when played. Serves audio byte ranges from cache. |
 | `app.css` | Shared styles (colours, buttons, player). Light/dark via `prefers-color-scheme`. |
-| `BricolageGrotesque-700.woff2` | Heading font, self-hosted (22 KB, SIL Open Font License). |
+| `Lexend-Variable.woff2` | Heading font on every page and text font on the front page (40 KB, SIL Open Font License). Chosen because it was designed for easy reading. |
+| `PatrickHand-Regular.woff2` | Handwriting font for the short "teacher's marker" notes on the front page only (24 KB, SIL Open Font License). |
 | `lessons.json` | Lesson index with real file sizes. |
 | `<id>-lesson.json`, `<id>-voice.opus`, `<id>-voice.m4a` | One lesson: instructions, voice (Opus 16 kbps), iPhone fallback audio (AAC). |
 | `katex.min.js`, `katex.min.css`, `KaTeX_*.woff2` | KaTeX 0.16.11, self-hosted so it works offline. |
@@ -104,6 +105,24 @@ Same 49-second "Area of a circle" lesson, teacher's recorded voice:
   whiteboard benchmark, an NGO/school partner.
 
 Never claim "20x less data" or results from tests that haven't been run.
+
+## Design (v2, "the page is a board")
+
+- White paper, navy ink, one blue marker. Each blue has one job (tokens in
+  `app.css`): `--accent` = marker and main action, `--tint` = paper being
+  drawn on, `--navy` = the dark "How it works" band, `--video` (grey) = video.
+- Sections show instead of describe: live player, x-ray, to-scale chart,
+  compare slider. Avoid rows of matching cards or stat tiles.
+- Handwriting font only for short margin notes that point at something.
+- The logo SVG in `index.html` must not be changed.
+
+### Previous design (v1)
+
+The first design is commit `033be03` on `main` (merge of pull request #1).
+To go back: restore `index.html`, `site.css`, `site.js`, `app.css` and
+`sw.js` from that commit, restore `BricolageGrotesque-700.woff2` and
+`Bricolage-LICENSE.txt`, delete the Lexend and Patrick Hand files, then give
+`sw.js` a new cache name.
 
 ## Website status
 
