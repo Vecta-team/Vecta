@@ -138,13 +138,4 @@
     }), { threshold: 0.6 });
     document.querySelectorAll("[data-draw]").forEach(n => io.observe(n));
   }
-
-  // ---------- footer: how much data this page really used, as reported by the browser
-  window.addEventListener("load", () => setTimeout(() => {
-    try {
-      const entries = performance.getEntriesByType("navigation").concat(performance.getEntriesByType("resource"));
-      const bytes = entries.reduce((n, e) => n + (e.transferSize || 0), 0);
-      if (bytes > 0) { $("pageKB").textContent = "Loading this page just now used " + Math.round(bytes / 1000) + " KB of data, as measured by your browser."; $("pageKB").hidden = false; }
-    } catch (e) { /* older browser: leave the line hidden */ }
-  }, 400));
 })();

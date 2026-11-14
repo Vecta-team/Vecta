@@ -133,7 +133,11 @@ a direct link. Still to do by the team:
 
 - Rewrite the mission, vision, values and model text in `index.html` in the
   team's own words (the current wording is an AI-written draft).
-- Add team names and a contact email (marked `TEAM:` in `index.html`).
+- The team asked for the team section, contact box, "not tested yet" list
+  footer credit line and the "data used by this page" line to be removed
+  from the front page. The footer is only the Vecta name, the page links and
+  the contact email (AKRPBahl@gmail.com, "for now"). Do not add them
+  back unless asked. AI help is still credited in `README.md`.
 - Keep numbers identical across the website, the Innovation Brief and the
   video. The headline numbers appear in `index.html` and `results.html`.
 

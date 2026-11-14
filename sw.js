@@ -1,5 +1,5 @@
 /* Vecta offline support. */
-const CACHE = "vecta-app-site-2026-11-14";   // the site and app: saved the first time the app page is opened. Change this name whenever any file below changes.
+const CACHE = "vecta-app-site-2026-11-14c";   // the site and app: saved the first time the app page is opened. Change this name whenever any file below changes.
 const LESSONS = "vecta-lessons-a507090628";  // lessons: saved by "Download all lessons" or when played
 const FILES = [
  "./",
