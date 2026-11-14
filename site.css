@@ -201,6 +201,5 @@ body.site { padding: 0; background: var(--surface); font-family: var(--display);
 
 /* ---------- footer */
 .foot { margin-top: clamp(64px, 9vw, 112px); padding-block: 22px max(40px, env(safe-area-inset-bottom, 0px)); border-top: 2px solid var(--ink); display: grid; gap: 14px; font-size: 14px; color: var(--muted); }
-.foot nav { gap: 20px; }
+.foot nav { gap: 8px 20px; }
 .foot p { max-width: 75ch; }
-#pageKB { font-family: var(--mono); font-size: 13px; color: var(--ink); }
